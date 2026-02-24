@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Simple E-commerce platform built with PHP, CSS Flexbox, and JavaScript.">
     <meta name="keywords" content="Ecommerce, Online Store, PHP Shop, Shopping Cart">
     <meta name="author" content="Your Name">
@@ -17,4 +16,5 @@
 
 <header>
     <h1>My E-Commerce Store</h1>
+    <button id="theme-toggle">Toggle Theme</button>
 </header>
