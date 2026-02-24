@@ -53,7 +53,44 @@ header {
     margin-top: 10px;
 }
 
-/* Responsive */
+form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea, button {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+.cookie-box {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+body.dark {
+    background: #121212;
+    color: white;
+}
+
+body.dark header {
+    background: #222;
+}
+
+
 @media (max-width: 768px) {
     .product-grid {
         flex-direction: column;
