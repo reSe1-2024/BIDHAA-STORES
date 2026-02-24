@@ -17,18 +17,48 @@ if(isset($_POST['checkout'])){
 
     echo "Order placed successfully!";
 }
+
 $total = 0;
 
-foreach($_SESSION['cart'] as $item){
-    $product = $conn->query("SELECT * FROM products WHERE id=$item")->fetch_assoc();
-    $total += $product['price'];
+if(isset($_SESSION['cart']) && is_array($_SESSION['cart']) && count($_SESSION['cart']) > 0){
+
+    foreach($_SESSION['cart'] as $item){
+
+        $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->bind_param("i", $item);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $product = $result->fetch_assoc();
+
+        $total += $product['price'];
+
+        $stmt->close();
+    }
+
+} else {
+    echo "Your cart is empty.";
 }
+
+
+if(isset($_SESSION['cart'])){
+    foreach($_SESSION['cart'] as $item){
+        $product = $conn->query("SELECT * FROM products WHERE id = $item")->fetch_assoc();
+        echo "<p>".$product['name']." - Ksh ".$product['price']."</p>";
+    }
+}
+
 ?>
 
 <main class="container">
     <h2>Checkout</h2>
-    <p>This is a simple checkout page.</p>
-    <p>Your total will be processed here.</p>
+     <ul id="cart-items"></ul>
+    <p><strong>Total: $<?= number_format($total, 2); ?></strong></p>
+
+    <form method="POST">
+        <input type="hidden" name="total" value="<?= $total; ?>">
+        <button type="submit" name="checkout">Place Order</button>
+    </form>
+
 </main>
 
 <?php include 'includes/footer.php'; ?>
