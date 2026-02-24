@@ -198,18 +198,27 @@ include 'includes/header.php'; ?>
 <h2>Cart</h2>
 
 <?php
+
+
 if(isset($_SESSION['cart'])){
     foreach($_SESSION['cart'] as $item){
         $product = $conn->query("SELECT * FROM products WHERE id = $item")->fetch_assoc();
         echo "<p>".$product['name']." - Ksh ".$product['price']."</p>";
     }
 }
+
+$total = 0;
+
+foreach($_SESSION['cart'] as $item){
+    $product = $conn->query("SELECT * FROM products WHERE id=$item")->fetch_assoc();
+    $total += $product['price'];
+}
 ?>
     <!-- Cart Section -->
     <section class="cart">
         <h2>Shopping Cart</h2>
         <ul id="cart-items"></ul>
-        <p>Total: $<span id="total">0</span></p>
+        <p><strong>Total: $<?= number_format($total, 2); ?></strong></p>
         <a href="checkout.php" class="checkout-btn">Proceed to Checkout</a>
     </section>
 
