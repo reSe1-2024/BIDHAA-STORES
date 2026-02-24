@@ -1,6 +1,99 @@
-<?php include 'includes/header.php'; ?>
+<?php
+session_start();
+require 'includes/db.php';
+
+if(isset($_POST['register'])){
+
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    if(empty($name) || empty($email) || empty($password)){
+        echo "All fields required!";
+    } else {
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $email, $hashed_password);
+
+        if($stmt->execute()){
+            echo "Registration successful!";
+        } else {
+            echo "Email already exists!";
+        }
+
+        $stmt->close();
+    }
+}
+
+if(isset($_POST['login'])){
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    $result_user = $stmt->get_result();
+
+    if($result_user->num_rows == 1){
+
+        $user = $result_user->fetch_assoc();
+
+        if(password_verify($password, $user['password'])){
+
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['name'];
+            $_SESSION['role'] = $user['role'];
+
+            echo "Login successful!";
+        } else {
+            echo "Wrong password!";
+        }
+    } else {
+        echo "User not found!";
+    }
+
+    $stmt->close();
+}
+
+if(isset($_GET['logout'])){
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
+
+
+$result = $conn->query("SELECT * FROM products");
+
+include 'includes/header.php'; ?>
 
 <main class="container">
+<?php if(!isset($_SESSION['user_id'])): ?>
+
+<h2>Login</h2>
+<form method="POST">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit" name="login">Login</button>
+</form>
+
+<h2>Register</h2>
+<form method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit" name="register">Register</button>
+</form>
+
+<?php else: ?>
+
+<p>Welcome, <?= htmlspecialchars($_SESSION['user_name']); ?> |
+<a href="?logout=true">Logout</a></p>
+
+<?php endif; ?>
 
     <!-- Product Section -->
     <section class="products">
