@@ -17,6 +17,12 @@ if(isset($_POST['checkout'])){
 
     echo "Order placed successfully!";
 }
+$total = 0;
+
+foreach($_SESSION['cart'] as $item){
+    $product = $conn->query("SELECT * FROM products WHERE id=$item")->fetch_assoc();
+    $total += $product['price'];
+}
 ?>
 
 <main class="container">
