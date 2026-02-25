@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+    
 <header>
     <h1>BIDHAA-STORES</h1>
     <button id="theme-toggle">Toggle Theme</button>
