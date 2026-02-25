@@ -12,20 +12,28 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-
+    
 <header>
     <h1>BIDHAA-STORES</h1>
-    <nav>
-    <?php if(isset($_SESSION['user_id'])): ?>
-        <a href="./index.php">Home</a>
-        <a href="./checkout.php">Checkout</a>
-        <a href="?logout=true">Logout</a>
-    <?php else: ?>
-        <a href="./index.php">Home</a>
-        <a href="./login.php">Login</a>
-        <a href="./register.php">Register</a>
-    <?php endif; ?>
-    <button id="theme-toggle">Toggle Theme</button>
-</nav>
-<hr>
+<nav>
+<?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+    <a href="./index.php">Home</a>
+    <a href="./checkout.php">Checkout</a>
+    <a href="?logout=true">Logout</a>
+    <a href="./admin.php">Admin</a>
+
+<?php elseif(isset($_SESSION['user_id'])): ?>
+    <a href="./index.php">Home</a>
+    <a href="./checkout.php">Checkout</a>
+    <a href="?logout=true">Logout</a>
+
+<?php else: ?>
+    <a href="./index.php">Home</a>
+    <a href="./login.php">Login</a>
+    <a href="./register.php">Register</a>
+
+<?php endif; ?>
+
+<button id="theme-toggle">Toggle Theme</button>
+</nav><hr>
 </header>
