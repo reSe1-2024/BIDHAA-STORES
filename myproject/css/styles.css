@@ -138,6 +138,8 @@ h1{
 
 .add-btn:hover, .remove-btn:hover, .delete-btn:hover {
     background: #333;
+    color:white;
+    border-color: white;
 }
 
 .cart {
@@ -159,6 +161,7 @@ h1{
 
 .checkout-btn:hover {
     background: #333;
+    color:#eee;
 }
 
 form {
