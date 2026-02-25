@@ -9,13 +9,12 @@
 
     <title>Simple E-Commerce</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     
 <header>
     <h1>BIDHAA-STORES</h1>
-    <button id="theme-toggle">Toggle Theme</button>
     <nav>
     <?php if(isset($_SESSION['user_id'])): ?>
         <a href="./index.php">Home</a>
@@ -26,6 +25,7 @@
         <a href="./login.php">Login</a>
         <a href="./register.php">Register</a>
     <?php endif; ?>
+    <button id="theme-toggle">Toggle Theme</button>
 </nav>
 <hr>
 </header>
