@@ -13,14 +13,13 @@ if (!isset($_SESSION['cart'])) {
 /* ===============================
    LOGOUT
 ================================ */
-/*
+
 if(isset($_GET['logout'])){
     session_destroy();
     header("Location: index.php");
-    setcookie("user_email", "", time() - 3600, "/");
     exit();
 }
-*/
+
 
 /* ===============================
    ADD TO CART
