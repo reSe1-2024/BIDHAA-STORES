@@ -19,6 +19,7 @@ if(isset($_GET['logout'])){
     exit();
 }
 
+
 /* ===============================
    ADD TO CART
 ================================ */
@@ -119,8 +120,7 @@ if(!empty($_SESSION['cart'])){
 
 <?php if(isset($_SESSION['user_id'])): ?>
 <p>
-Welcome, <?= htmlspecialchars($_SESSION['user']); ?>
-<a href="?logout=true">Logout</a>
+Welcome, <?= htmlspecialchars($_SESSION['user'] ?? 'Guest'); ?>
 </p>
 <?php endif; ?>
 
@@ -180,7 +180,7 @@ Welcome, <?= htmlspecialchars($_SESSION['user']); ?>
     <?php endforeach; ?>
 
     <p><strong>Total: Ksh <?= number_format($total, 2); ?></strong></p>
-    <a href="checkout.php">Proceed to Checkout</a>
+    <a href="checkout.php" class="checkout-btn">Proceed to Checkout</a>
 
 <?php endif; ?>
 </section>
