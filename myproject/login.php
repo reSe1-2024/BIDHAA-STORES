@@ -3,6 +3,8 @@ session_start();
 require 'includes/db.php';
 include 'includes/header.php';
 
+$error = "";
+
 if(isset($_POST['login'])){
 
     $email = $_POST['email'];
@@ -19,21 +21,56 @@ if(isset($_POST['login'])){
 
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
+            
+            if(isset($_POST['remember'])){
+                setcookie("email", $user['email'], time() + (86400 * 30), "/"); // 30 days
+            } else {
+                // Clear cookie if not checked
+                setcookie("email", "", time() - 3600, "/");
+            }
 
             header("Location: index.php");
             exit();
+        } else {
+            $error = "Incorrect password";
         }
+    } else {
+        $error = "Email not found!";
     }
-
     echo "Invalid login!";
 }
 ?>
 
 <h2>Login</h2>
 
+<?php if($error != ""): ?>
+    <p style="color:red;"><?php echo $error; ?></p>
+<?php endif; ?>
+
 <form method="POST">
-    <input type="email" name="email" placeholder="Email" required><br>
-    <input type="password" name="password" placeholder="Password" required><br>
+    <input 
+        type="email" 
+        name="email" 
+        placeholder="Email" 
+        required 
+        value="<?= htmlspecialchars($_COOKIE['email'] ?? '') ?>"
+    >
+    <br><br>
+
+    <input 
+        type="password" 
+        name="password" 
+        placeholder="Password" 
+        required
+    >
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="remember">
+        Remember me
+    </label>
+    <br><br>
+
     <button type="submit" name="login">Login</button>
     <p>Don't have an Account?<a href="register.php">Sign up</a></p>
 </form>
