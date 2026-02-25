@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
 }
 ?>
 
-<h2>Login</h2>
+<h2 class="login-title">Login</h2>
 
 <?php if($error != ""): ?>
     <p style="color:red;"><?php echo $error; ?></p>
@@ -55,7 +55,7 @@ if(isset($_POST['login'])){
         required 
         value="<?= htmlspecialchars($_COOKIE['email'] ?? '') ?>"
     >
-    <br><br>
+    <br>
 
     <input 
         type="password" 
@@ -63,14 +63,12 @@ if(isset($_POST['login'])){
         placeholder="Password" 
         required
     >
-    <br><br>
 
     <label>
         <input type="checkbox" name="remember">
         Remember me
     </label>
-    <br><br>
-
-    <button type="submit" name="login">Login</button>
+<br>
+    <button type="submit" name="login" class="toggle-btn">Login</button>
     <p>Don't have an Account?<a href="register.php">Sign up</a></p>
 </form>
