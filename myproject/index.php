@@ -119,10 +119,12 @@ if(!empty($_SESSION['cart'])){
 
 <main class="container">
 
-<?php if(isset($_SESSION['user_id'])): ?>
+<?php if(isset($_SESSION['user_id']) && isset($_SESSION['name'])): ?>
 <p>
-Welcome, <?= htmlspecialchars($_SESSION['user'] ?? 'Guest'); ?>
+Welcome, <?= htmlspecialchars($_SESSION['name']); ?>
 </p>
+<?php else: ?>
+    <p>Welcome, Guest</p>
 <?php endif; ?>
 
 <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>

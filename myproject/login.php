@@ -21,6 +21,7 @@ if(isset($_POST['login'])){
 
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['name'] = $user['name'];
             
             if(isset($_POST['remember'])){
                 setcookie("email", $user['email'], time() + (86400 * 30), "/"); // 30 days
