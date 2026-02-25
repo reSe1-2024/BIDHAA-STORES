@@ -27,6 +27,7 @@ if(isset($_POST['register'])){
     }
 }
 ?>
+<div class="register-container">
 <h2>Register</h2>
 <form method="POST">
     <input type="text" name="name" placeholder="Name" required>
@@ -39,3 +40,4 @@ if(isset($_POST['register'])){
 </p>
 
 </form>
+</div>

@@ -38,16 +38,17 @@ if(isset($_POST['login'])){
 if(!isset($_SESSION['user_id'])):
     ?>
 
-<h2>Login</h2>
-<form method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit" name="login" onclick="window.location.href='index.php'">Login</button>
-    <p>
-    Don't have an account?
-    <a href="register.php">Sign up</a>
-</p>
-</form>
+<<div class="login-container">
+    <h2>Login</h2>
+    <form method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" name="login">Login</button>
+        <p>
+            Don't have an account? <a href="register.php">Sign up</a>
+        </p>
+    </form>
+</div>
 <?php else: ?>
 
  
