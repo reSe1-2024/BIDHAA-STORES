@@ -30,12 +30,14 @@ a{
 a:active, a:hover{
     color:rgb(43, 44, 1);
 }
-nav{
+ul{
     display:flex;
+    justify-content: space-evenly;
+    align-content: center;
     gap:50px;
 }
 h1{
-    margin-right: 430px;
+    margin-right: 400px;
 }
 .nav-item{
     display: inline-block;
@@ -53,6 +55,20 @@ h1{
     padding: 12px ;
     border-radius: 6px;
     cursor: pointer;
+}
+.addition-btn{
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.addition-btn:hover {
+    background-color: #333;
+    color: white;
 }
 
 .add-btn{
@@ -210,7 +226,107 @@ body.dark .product {
 body.dark .cart {
     border-top: 1px solid #333;
 }
+body.dark .checkout-btn {
+    background: #333;
+    color: #eee;
+}
+body.dark .checkout-btn:hover {
+    background: #111;
+    color: white;
+}   
+body.dark .toggle-btn {
+    background-color: #333;
+    color: white;
+}   
+body.dark .toggle-btn:hover {
+    background-color: #111;
+    color: white;
+}   
+body.dark .add-btn {
+    background-color: #333;
+    color: white;
+}
+body.dark .add-btn:hover {
+    background-color: #111;
+    color: white;
+}
+body.dark .remove-btn {
+    background-color: #333;
+    color: white;
+}
+body.dark .remove-btn:hover {
+    background-color: #111;
+    color: white;
+}
+body.dark .delete-btn {
+    background-color: #333;
+    color: white;
+}   
+body.dark .delete-btn:hover {
+    background-color: #111;
+    color: white;
+}
+body.dark .cookie-box {
+    background: #333;
+    color: #eee;
+}
+body.dark a {
+    color: #8d8888;
+}
+body.dark a:active, body.dark a:hover {
+    color:rgb(43, 44, 1);
+}
+body.dark .nav-item {
+    color: #8d8888;
+}
+body.dark .nav-item:hover {
+    color:rgb(43, 44, 1);
+}
+body.dark .login-title, body.dark .register-title {
+    color: #eee;
+}
+body.dark .product-card {
+    background: #1f1f1f;
+}
+body.dark .products h2 {
+    color: #eee;
+}
+body.dark .products h3 {
+    color: #eee;
+}
+body.dark .products p {
+    color: #eee;
+}
+body.dark form input, body.dark form textarea {
+    background: #1f1f1f;
+    border: 1px solid #333;
+    color: #eee;
+}
+body.dark form input:focus, body.dark form textarea:focus {
+    border-color: #eee;
+}   
 
+body.dark .product-card{
+    background-color: #333;
+}
+body.dark .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+}
+body.dark .product-img {
+    filter: brightness(0.8);
+}   
+body.dark .cart {
+    border-top: 1px solid #333;
+}
+body.dark .addition-btn{
+    background-color: #333;
+    color: white;
+}
+body.dark .addition-btn:hover {
+    background-color: #111;
+    color: white;
+}
 @media (max-width: 768px) {
     header {
         flex-direction: column;

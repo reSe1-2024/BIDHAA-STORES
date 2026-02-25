@@ -133,7 +133,7 @@ Welcome, <?= htmlspecialchars($_SESSION['name']); ?>
     <input type="text" name="name" placeholder="Product Name" required>
     <input type="number" name="price" step="0.01" required>
     <textarea name="description" placeholder="Description"></textarea>
-    <button type="submit" name="add_product">Add Product</button>
+    <button type="submit" name="add_product" class="addition-btn">Add Product</button>
 </form>
 <?php endif; ?>
 
