@@ -42,16 +42,31 @@ if(isset($_POST['checkout']) && $total > 0){
 }
 ?>
 
-<h2>Checkout</h2>
+<main class="container">
+    <h2>Checkout</h2>
 
-<?php foreach($cart_products as $product): ?>
-    <p><?= htmlspecialchars($product['name']); ?> - Ksh <?= number_format($product['price'],2); ?></p>
-<?php endforeach; ?>
+    <?php if(empty($_SESSION['cart'])): ?>
+        <p>Your cart is empty.</p>
+    <?php else: ?>
 
-<p><strong>Total: Ksh <?= number_format($total,2); ?></strong></p>
+        <?php foreach($_SESSION['cart'] as $item): ?>
+            <?php if(isset($cart_products[$item])): ?>
+                <p>
+                    <?= htmlspecialchars($cart_products[$item]['name']); ?>
+                    - Ksh <?= number_format($cart_products[$item]['price'],2); ?>
+                </p>
+            <?php endif; ?>
+        <?php endforeach; ?>
 
-<form method="POST">
-    <button type="submit" name="checkout" class="toggle-btn">Place Order</button>
-</form>
+        <p><strong>Total: Ksh <?= number_format($total, 2); ?></strong></p>
+
+        <form method="POST">
+            <button type="submit" name="checkout" class="checkout-btn">
+                Place Order
+            </button>
+        </form>
+
+    <?php endif; ?>
+</main>
 
 <?php include 'includes/footer.php'; ?>
