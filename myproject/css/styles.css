@@ -30,12 +30,7 @@ a{
 a:active, a:hover{
     color:rgb(43, 44, 1);
 }
-ul{
-    display:flex;
-    justify-content: space-evenly;
-    align-content: center;
-    gap:50px;
-}
+
 h1{
     margin-right: 400px;
 }
@@ -71,36 +66,6 @@ h1{
     color: white;
 }
 
-.add-btn{
-    background-color: #111;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    margin-top: 15px;
-}
-.remove-btn{
-    background-color: #111;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-.delete-btn{
-    background-color: #111;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
 .products h2 {
     margin-bottom: 20px;
     font-size: 22px;
@@ -128,11 +93,17 @@ h1{
 }
 
 .product-img {
+    width: 100%;
+    height: 220px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
 .products h3 {
     font-size: 22px;
     margin-bottom: 10px;
@@ -162,8 +133,7 @@ h1{
     flex: 1;                 
 }
 .product-btn {
-    width: 100%;
-    padding: 10px;
+    padding: 10px 16px;
     border-radius: 8px;
     font-weight: 600;
     border: none;
@@ -174,27 +144,33 @@ h1{
 .add-btn {
     background: #007bff;
     color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
 }
 
 .add-btn:hover {
+    background: #0056b3;   /* darker but still bright blue */
     box-shadow: 0 0 10px #007bff;
     transform: translateY(-3px);
+    color: white;
 }
 
 .remove-btn {
     background: #dc3545;
     color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
 }
 
 .remove-btn:hover {
+    background: #a71d2a;  /* darker red but still visible */
     box-shadow: 0 0 10px #dc3545;
     transform: translateY(-3px);
-}
-
-.add-btn:hover, .remove-btn:hover, .delete-btn:hover {
-    background: #333;
-    color:white;
-    border-color: white;
+    color: white;
 }
 
 .cart {
@@ -217,6 +193,7 @@ h1{
 .checkout-btn:hover {
     background: #333;
     color:#eee;
+    box-shadow: 0 0 10px #007bff;
 }
 
 form {
@@ -248,44 +225,38 @@ input:focus, textarea:focus {
     border-radius: 8px;
     font-size: 14px;
 }
-/* ================= HEADER ================= */
 
 .main-header {
-    width: 100%;
-    padding: 20px 40px;
     display: flex;
-    flex-direction: column;   /* stack brand + nav vertically */
-    align-items: center;      /* center brand row */
+    justify-content: space-between;  /* pushes left & right apart */
+    align-items: center;
+    padding: 18px 40px;
+    background: white;
 }
 
-/* Logo + Title in same row */
 .brand-row {
     display: flex;
     align-items: center;
-    justify-content: center;  /* center horizontally */
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: 12px;
 }
 
-.brand-logo {
-    width: 100px;
-    height: auto;
-}
-
-.brand-title {
-    font-size: 42px;   /* BIG */
-    font-weight: 800;
+.title {
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     margin: 0;
 }
 
-/* Navigation row */
+.logo {
+    width: 70px;
+    height: 70px;
+}
 .main-nav {
-    width: 100%;
     display: flex;
-    justify-content: flex-end;  /* push nav to far right */
+    align-items: center;
     gap: 15px;
 }
-/* ===== NAV BUTTON CONTAINERS ===== */
 
 .nav-btn {
     text-decoration: none;
