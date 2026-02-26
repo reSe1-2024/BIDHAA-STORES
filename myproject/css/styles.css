@@ -14,7 +14,7 @@ header {
     background: white;
     padding: 18px 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -23,10 +23,87 @@ header {
     padding: 40px;
 }
 
+a{
+    text-decoration: none;
+    color: #8d8888;
+}
+a:active, a:hover{
+    color:rgb(43, 44, 1);
+}
+ul{
+    display:flex;
+    justify-content: space-evenly;
+    align-content: center;
+    gap:50px;
+}
+h1{
+    margin-right: 400px;
+}
+.nav-item{
+    display: inline-block;
+    color: #8d8888;
+    font-size: 18px;
+    padding:5px;
+    list-style-type: none;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+.toggle-btn{
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 12px ;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.addition-btn{
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.addition-btn:hover {
+    background-color: #333;
+    color: white;
+}
 
+.add-btn{
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+.remove-btn{
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.delete-btn{
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 .products h2 {
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -36,7 +113,7 @@ header {
     gap: 25px;
 }
 
-.product {
+.product-card {
     background: white;
     border-radius: 12px;
     padding: 20px;
@@ -50,33 +127,29 @@ header {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.product img {
-    width: 100%;
-    height: 200px;
+.product-img {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 
-.product h3 {
-    font-size: 16px;
+.products h3 {
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
-.product p {
+.products p {
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     font-size: 15px;
 }
 
-.product button {
-    background: #111;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
+.login-title, .register-title{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #111;
 }
 .product-buttons {
     display: flex;          
@@ -118,8 +191,10 @@ header {
     transform: translateY(-3px);
 }
 
-.product button:hover {
+.add-btn:hover, .remove-btn:hover, .delete-btn:hover {
     background: #333;
+    color:white;
+    border-color: white;
 }
 
 .cart {
@@ -141,6 +216,7 @@ header {
 
 .checkout-btn:hover {
     background: #333;
+    color:#eee;
 }
 
 form {
@@ -270,7 +346,107 @@ body.dark .product {
 body.dark .cart {
     border-top: 1px solid #333;
 }
+body.dark .checkout-btn {
+    background: #333;
+    color: #eee;
+}
+body.dark .checkout-btn:hover {
+    background: #111;
+    color: white;
+}   
+body.dark .toggle-btn {
+    background-color: #333;
+    color: white;
+}   
+body.dark .toggle-btn:hover {
+    background-color: #111;
+    color: white;
+}   
+body.dark .add-btn {
+    background-color: #333;
+    color: white;
+}
+body.dark .add-btn:hover {
+    background-color: #111;
+    color: white;
+}
+body.dark .remove-btn {
+    background-color: #333;
+    color: white;
+}
+body.dark .remove-btn:hover {
+    background-color: #111;
+    color: white;
+}
+body.dark .delete-btn {
+    background-color: #333;
+    color: white;
+}   
+body.dark .delete-btn:hover {
+    background-color: #111;
+    color: white;
+}
+body.dark .cookie-box {
+    background: #333;
+    color: #eee;
+}
+body.dark a {
+    color: #8d8888;
+}
+body.dark a:active, body.dark a:hover {
+    color:rgb(43, 44, 1);
+}
+body.dark .nav-item {
+    color: #8d8888;
+}
+body.dark .nav-item:hover {
+    color:rgb(43, 44, 1);
+}
+body.dark .login-title, body.dark .register-title {
+    color: #eee;
+}
+body.dark .product-card {
+    background: #1f1f1f;
+}
+body.dark .products h2 {
+    color: #eee;
+}
+body.dark .products h3 {
+    color: #eee;
+}
+body.dark .products p {
+    color: #eee;
+}
+body.dark form input, body.dark form textarea {
+    background: #1f1f1f;
+    border: 1px solid #333;
+    color: #eee;
+}
+body.dark form input:focus, body.dark form textarea:focus {
+    border-color: #eee;
+}   
 
+body.dark .product-card{
+    background-color: #333;
+}
+body.dark .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+}
+body.dark .product-img {
+    filter: brightness(0.8);
+}   
+body.dark .cart {
+    border-top: 1px solid #333;
+}
+body.dark .addition-btn{
+    background-color: #333;
+    color: white;
+}
+body.dark .addition-btn:hover {
+    background-color: #111;
+    color: white;
+}
 @media (max-width: 768px) {
     header {
         flex-direction: column;

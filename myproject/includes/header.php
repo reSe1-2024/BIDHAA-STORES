@@ -35,4 +35,38 @@
     </nav>
 
 
+    
+<header>
+    <img src="img/shopping-cart.png" alt="bidhaa-stores logo" class="logo" width="50" height="50">
+    <h1>BIDHAA-STORES</h1>
+<nav>
+<?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+    <ul>
+    <li class="nav-item"><a href="./index.php">Home</a></li >
+    <li class="nav-item"><a href="./checkout.php">Checkout</a></li >
+    <li class="nav-item"><a href="?logout=true">Logout</a></li >
+    <li class="nav-item"><a href="./admin.php">Admin</a></li >
+    </ul>
+   
+
+<?php elseif(isset($_SESSION['user_id'])): ?>
+    <ul>
+    <li class="nav-item"><a href="./index.php">Home</a></li >
+    <li class="nav-item"><a href="./checkout.php">Checkout</a></li >
+    <li class="nav-item"><a href="?logout=true">Logout</a></li >
+    </ul>
+    
+
+<?php else: ?>
+    <ul>
+    <li class="nav-item"><a href="./index.php">Home</a></li >
+    <li class="nav-item"><a href="./login.php">Login</a></li >
+    <li class="nav-item"><a href="./register.php">Register</a></li >
+    </ul>
+    
+
+<?php endif; ?>
+
+<button id="theme-toggle" class="toggle-btn">Toggle Theme</button>
+</nav><hr>
 </header>
