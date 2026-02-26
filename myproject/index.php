@@ -126,7 +126,7 @@ if (!empty($_SESSION['cart'])) {
             <input type="text" name="name" placeholder="Product Name" required>
             <input type="number" name="price" step="0.01" placeholder="Price" required>
             <textarea name="description" placeholder="Description"></textarea>
-            <button type="submit" name="add_product">Add Product</button>
+            <button type="submit" name="add_product" class="addition-btn">Add Product</button>
         </form>
         <hr>
     <?php endif; ?>
@@ -166,7 +166,8 @@ if (!empty($_SESSION['cart'])) {
                 <form method="POST">
                     <input type="hidden" name="delete_id" value="<?= $row['id']; ?>">
                     <button name="delete_product"
-                        onclick="return confirm('Delete this product?')">
+                        onclick="return confirm('Delete this product?')"
+                        class="product-btn delete-btn">
                         Delete
                     </button>
                 </form>
