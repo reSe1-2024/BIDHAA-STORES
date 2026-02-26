@@ -45,46 +45,44 @@ if(isset($_POST['login'])){
 <h2 class="login-title">Login</h2>
 
 <?php if($error != ""): ?>
-    <p style="color:red;"><?php echo $error; ?></p>
+    <p style="color:red;"><?= $error; ?></p>
 <?php endif; ?>
 
-<<div class="login-container">
-    <h2>Login</h2>
+<?php if(!isset($_SESSION['user_id'])): ?>
+
+<div class="login-container">
     <form method="POST">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            required 
+            value="<?= htmlspecialchars($_COOKIE['email'] ?? '') ?>"
+        >
+
+        <input 
+            type="password" 
+            name="password" 
+            placeholder="Password" 
+            required
+        >
+
+        <label>
+            <input type="checkbox" name="remember">
+            Remember me
+        </label>
+
         <button type="submit" name="login">Login</button>
+
         <p>
-            Don't have an account? <a href="register.php">Sign up</a>
+            Don't have an account?
+            <a href="register.php">Sign up</a>
         </p>
     </form>
 </div>
+
 <?php else: ?>
 
- 
+    <p>You are already logged in.</p>
+
 <?php endif; ?>
-<form method="POST">
-    <input 
-        type="email" 
-        name="email" 
-        placeholder="Email" 
-        required 
-        value="<?= htmlspecialchars($_COOKIE['email'] ?? '') ?>"
-    >
-    <br>
-
-    <input 
-        type="password" 
-        name="password" 
-        placeholder="Password" 
-        required
-    >
-
-    <label>
-        <input type="checkbox" name="remember">
-        Remember me
-    </label>
-<br>
-    <button type="submit" name="login" class="toggle-btn">Login</button>
-    <p>Don't have an Account?<a href="register.php">Sign up</a></p>
-</form>
