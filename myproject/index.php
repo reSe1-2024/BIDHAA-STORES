@@ -13,6 +13,7 @@ if (!isset($_SESSION['cart'])) {
 /* ===============================
    LOGOUT
 ================================ */
+
 if(isset($_GET['logout'])){
     session_destroy();
     header("Location: index.php");
@@ -118,10 +119,12 @@ if(!empty($_SESSION['cart'])){
 
 <main class="container">
 
-<?php if(isset($_SESSION['user_id'])): ?>
+<?php if(isset($_SESSION['user_id']) && isset($_SESSION['name'])): ?>
 <p>
-Welcome, <?= htmlspecialchars($_SESSION['user'] ?? 'Guest'); ?>
+Welcome, <?= htmlspecialchars($_SESSION['name']); ?>
 </p>
+<?php else: ?>
+    <p>Welcome, Guest</p>
 <?php endif; ?>
 
 <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
@@ -130,7 +133,7 @@ Welcome, <?= htmlspecialchars($_SESSION['user'] ?? 'Guest'); ?>
     <input type="text" name="name" placeholder="Product Name" required>
     <input type="number" name="price" step="0.01" required>
     <textarea name="description" placeholder="Description"></textarea>
-    <button type="submit" name="add_product">Add Product</button>
+    <button type="submit" name="add_product" class="addition-btn">Add Product</button>
 </form>
 <?php endif; ?>
 
@@ -141,23 +144,24 @@ Welcome, <?= htmlspecialchars($_SESSION['user'] ?? 'Guest'); ?>
 <?php while($row = $result->fetch_assoc()): ?>
     <div class="product-card">
         <h3><?= htmlspecialchars($row['name']); ?></h3>
+        <img src="img/products (1).png" alt="product image" class="product-image" width="150" height="150">
         <p>Ksh <?= number_format($row['price'], 2); ?></p>
         <p><?= htmlspecialchars($row['description']); ?></p>
 
         <form method="POST">
             <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
-            <button name="add">Add to Cart</button>
+            <button name="add" class="add-btn">Add to Cart</button>
         </form>
 
         <form method="POST">
             <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
-            <button name="remove">Remove</button>
+            <button name="remove" class="remove-btn">Remove</button>
         </form>
 
         <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
         <form method="POST">
             <input type="hidden" name="delete_id" value="<?= $row['id']; ?>">
-            <button name="delete_product" onclick="return confirm('Delete this product?')">Delete</button>
+            <button name="delete_product" class="delete-btn" onclick="return confirm('Delete this product?')">Delete</button>
         </form>
         <?php endif; ?>
     </div>

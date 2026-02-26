@@ -23,12 +23,12 @@ if(isset($_POST['register'])){
 }
 ?>
 
-<h2>Register</h2>
+<h2 class="register-title">Register</h2>
 
 <form method="POST">
-    <input type="text" name="name" placeholder="Name" required><br>
-    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required><br>
-    <button type="submit" name="register">Register</button>
+    <button type="submit" name="register" class="toggle-btn">Register</button>
     <p>Already have an Account?<a href="login.php">Login</a></p>
 </form>

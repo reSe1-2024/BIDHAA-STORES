@@ -51,7 +51,7 @@ if(isset($_POST['checkout']) && $total > 0){
 <p><strong>Total: Ksh <?= number_format($total,2); ?></strong></p>
 
 <form method="POST">
-    <button type="submit" name="checkout">Place Order</button>
+    <button type="submit" name="checkout" class="toggle-btn">Place Order</button>
 </form>
 
 <?php include 'includes/footer.php'; ?>
