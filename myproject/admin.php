@@ -45,7 +45,7 @@ if(isset($_GET['delete'])){
     <input type="text" name="name" placeholder="Product Name" required><br>
     <input type="number" step="0.01" name="price" placeholder="Price" required><br>
     <textarea name="description" placeholder="Description"></textarea><br>
-    <button type="submit" name="add_product" class="addition-btn">Add Product</button>
+    <button type="submit" name="add_product" class=" addition-btn">Add Product</button>
 </form>
 
 <h3>All Products</h3>
