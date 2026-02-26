@@ -42,6 +42,18 @@ if(isset($_POST['checkout']) && $total > 0){
 }
 ?>
 
+<main class="container">
+    <h2>Checkout</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total: $<?= number_format($total, 2); ?></strong></p>
+
+    <form method="POST">
+        <input type="hidden" name="total" value="<?= $total; ?>">
+        <button type="submit" name="checkout" class="checkout-btn">
+            Place Order
+        </button>
+    </form>
+</main>
 <h2>Checkout</h2>
 
 <?php foreach($cart_products as $product): ?>

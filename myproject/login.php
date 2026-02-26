@@ -48,6 +48,21 @@ if(isset($_POST['login'])){
     <p style="color:red;"><?php echo $error; ?></p>
 <?php endif; ?>
 
+<<div class="login-container">
+    <h2>Login</h2>
+    <form method="POST">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" name="login">Login</button>
+        <p>
+            Don't have an account? <a href="register.php">Sign up</a>
+        </p>
+    </form>
+</div>
+<?php else: ?>
+
+ 
+<?php endif; ?>
 <form method="POST">
     <input 
         type="email" 

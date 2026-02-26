@@ -94,6 +94,16 @@ if(!empty($_SESSION['cart'])){
     // Create placeholders (?, ?, ?)
     $placeholders = implode(',', array_fill(0, count($ids), '?'));
 
+<h2>Add Product</h2>
+<form method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Product Name" required>
+    <input type="number" name="price" step="0.01" placeholder="Price" required>
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="file" name="image" accept="image/*" required>
+    <button name="add_product">Add Product</button>
+</form>
+
+<?php endif; ?>
     $types = str_repeat('i', count($ids));
 
     $stmt = $conn->prepare("SELECT id, name, price FROM products WHERE id IN ($placeholders)");
@@ -117,6 +127,33 @@ if(!empty($_SESSION['cart'])){
 }
 ?>
 
+    <div class="product-grid">
+        <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+        ?>
+       <div class="product">
+    
+            <h3><?= htmlspecialchars($row['name']); ?></h3>
+            <p>Ksh <?= number_format($row['price'], 2); ?></p>
+            <p><?= htmlspecialchars($row['description']); ?></p>
+
+  <div class="product-buttons">
+    <form method="POST">
+        <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
+        <button type="submit" name="add" class="product-btn add-btn">
+            Add to Cart
+        </button>
+    </form>
+
+    <form method="POST">
+        <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
+        <button type="submit" name="remove" class="product-btn remove-btn">
+            Remove
+        </button>
+    </form>
+</div>
+    <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
 <main class="container">
 
 <?php if(isset($_SESSION['user_id']) && isset($_SESSION['name'])): ?>

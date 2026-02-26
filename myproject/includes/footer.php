@@ -4,5 +4,10 @@
 </div>
 
 <script src="js/script.js"></script>
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+</script>
 </body>
 </html>
